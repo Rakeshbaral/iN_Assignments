@@ -1,0 +1,357 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. Write a function that takes a list of lists and returns the value of all of the\n",
+    "symbols in it, where each symbol adds or takes something from the total\n",
+    "score."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "***# = 5\n",
+    "O = 3\n",
+    "X = 1\n",
+    "! = -1\n",
+    "!! = -3\n",
+    "!!! = -5***"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list1=[['#','#','X'],['!','!!','O','!!!','X']]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def Score(list1):\n",
+    "    scr=0\n",
+    "    for i in list1:\n",
+    "        for j in i:\n",
+    "            if j=='#':\n",
+    "                scr+=5\n",
+    "            elif j=='O':\n",
+    "                scr+=3\n",
+    "            elif j=='X':\n",
+    "                scr+=1\n",
+    "            elif j=='!':\n",
+    "                scr+=-1\n",
+    "            elif j=='!!':\n",
+    "                scr+=-3\n",
+    "            elif j=='!!!':\n",
+    "                scr+=-5\n",
+    "            else:\n",
+    "                scr+=0\n",
+    "    return scr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "6\n"
+     ]
+    }
+   ],
+   "source": [
+    "scr=Score(list1)\n",
+    "print(scr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "list2=[[\"#\",\"!\"],[\"!!\",\"X\"]]\n",
+    "print(Score(list2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Number of combnations possible using two set of groups having m and n number of items=mn"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "2. Create a function that takes a variable number of arguments, each\n",
+    "argument representing the number of items in a group, and returns the\n",
+    "number of permutations (combinations) of items that you could get by taking\n",
+    "one item from each group."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def combinations(*args):\n",
+    "    numbers=args\n",
+    "    result=1\n",
+    "    for i in numbers:\n",
+    "        result=result*i\n",
+    "    print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "24\n"
+     ]
+    }
+   ],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "3. Create a function that takes a string as an argument and returns the Morse\n",
+    "code equivalent."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def convt_Morse(string):\n",
+    "    Morse_dict={ 'A':'.-', 'B':'-...', \n",
+    "                    'C':'-.-.', 'D':'-..', 'E':'.', \n",
+    "                    'F':'..-.', 'G':'--.', 'H':'....', \n",
+    "                    'I':'..', 'J':'.---', 'K':'-.-', \n",
+    "                    'L':'.-..', 'M':'--', 'N':'-.', \n",
+    "                    'O':'---', 'P':'.--.', 'Q':'--.-', \n",
+    "                    'R':'.-.', 'S':'...', 'T':'-', \n",
+    "                    'U':'..-', 'V':'...-', 'W':'.--', \n",
+    "                    'X':'-..-', 'Y':'-.--', 'Z':'--..', \n",
+    "                    '1':'.----', '2':'..---', '3':'...--', \n",
+    "                    '4':'....-', '5':'.....', '6':'-....', \n",
+    "                    '7':'--...', '8':'---..', '9':'----.', \n",
+    "                    '0':'-----', ', ':'--..--', '.':'.-.-.-', \n",
+    "                    '?':'..--..', '/':'-..-.', '-':'-....-', \n",
+    "                    '(':'-.--.', ')':'-.--.-'} \n",
+    "    string=string.upper()\n",
+    "    encrypt_string=''\n",
+    "    for i in string:\n",
+    "        if i==' ':\n",
+    "            encrypt_string=encrypt_string+' '\n",
+    "        else:\n",
+    "            encrypt_string=encrypt_string+Morse_dict[i]\n",
+    "    print(encrypt_string)\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "......-...--. --.\n"
+     ]
+    }
+   ],
+   "source": [
+    "convt_Morse('help me')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "4. Write a function that takes a number and returns True if it&#39;s a prime; False\n",
+    "otherwise. The number can be 2^64-1 (2 to the power of 63, not XOR). With\n",
+    "the standard technique it would be O(2^64-1), which is much too large for the\n",
+    "10 second time limit."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter a number55555\n",
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "num1=int(input(\"Enter a number\"))\n",
+    "if num1<2^64:\n",
+    "    detect_prime(num1)\n",
+    "else:\n",
+    "    print(\"False\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def detect_prime(num1):\n",
+    "    flag=0\n",
+    "    for i in range(2,num1//2):\n",
+    "        if num1%i==0:\n",
+    "            flag=1\n",
+    "            break\n",
+    "    if flag==1:\n",
+    "        print(\"True\")\n",
+    "    else:\n",
+    "        print(\"False\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "18446744073709551616"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2**64"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "5. Create a function that converts a word to a bitstring and then to a boolean\n",
+    "list based on the following criteria:\n",
+    "            1. Locate the position of the letter in the English alphabet (from 1 to 26).\n",
+    "            2. Odd positions will be represented as 1 and 0 otherwise.\n",
+    "            3. Convert the represented positions to boolean values, 1 for True and 0\n",
+    "            for False.\n",
+    "               4. Store the conversions into an array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter a wordtesh\n",
+      "[False, True, True, False]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import string\n",
+    "word=input(\"Enter a word\")\n",
+    "word=word.lower()\n",
+    "values = dict()\n",
+    "for index, letter in enumerate(string.ascii_lowercase):\n",
+    "    values[letter] = index + 1\n",
+    "    #print('x')\n",
+    "#print(values)\n",
+    "bool_map(word)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def bool_map(word):\n",
+    "    arr_list=[]\n",
+    "    for i in word:\n",
+    "        #print(i)\n",
+    "        if values[i]%2==0:\n",
+    "            arr_list.append(0)\n",
+    "        else:\n",
+    "            #print('x')\n",
+    "            arr_list.append(1)\n",
+    "    arr_list=list(map(bool,arr_list))\n",
+    "    print(arr_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
