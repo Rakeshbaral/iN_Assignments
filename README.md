@@ -1,2 +1,2 @@
-# iNeuron_Assignments
+# iN_Assignments
 This repository is there only for the institue assignment submission purpose.
